@@ -1,103 +1,256 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import {
+  ShieldCheck,
+  Users,
+  TrendingUp,
+  CheckCircle,
+  Lock,
+  Zap,
+} from "lucide-react";
+import SignUpForm from "@/components/signup-form";
+import UserCard from "@/components/user-card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+type User = {
+  fullName: string;
+  email: string;
+};
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [user, setUser] = useState<User | null>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleSignUpSuccess = (data: User) => {
+    setUser(data);
+  };
+
+  const handleStartOver = () => {
+    setUser(null);
+  };
+
+  if (user) {
+    return (
+      <div className="container py-12 text-center">
+        <div className="flex flex-col items-center">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground font-headline mb-4">
+            Welcome to Accountable!
+          </h1>
+          <p className="text-muted-foreground mb-8 max-w-2xl">
+            Your account has been created successfully. You are now part of a
+            community that values trust and transparency. Explore what's next
+            for you.
+          </p>
+          <UserCard name={user.fullName} email={user.email} />
+          <Button onClick={handleStartOver} variant="link" className="mt-8">
+            Start Over
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <section className=" py-15 md:py-1 bg-gradient-to-b from-background to-card">
+        <div className="container grid md:grid-cols-2 gap-12 items-center">
+          <div className="min-h-screen flex items-center justify-center px-4">
+            <div className="space-y-6 text-center max-w-2xl">
+              <h1 className="text-2xl md:text-5xl font-bold font-headline tracking-tighter">
+                Build Trust with Accountable, Your Secure Sign-Up Solution
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                Accountable provides a seamless and secure sign-up experience,
+                demonstrating our commitment to user trust and data protection
+                from the very first click.
+              </p>
+              <div className="w-full max-w-md mx-auto">
+                <SignUpForm onSuccess={handleSignUpSuccess} />
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center justify-center">
+            <div className="relative w-full max-w-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-card/50 backdrop-blur-sm border rounded-3xl p-8 space-y-6">
+                <div className="flex items-center justify-center space-x-3">
+                  <CheckCircle className="h-6 w-6 text-green-500" />
+                  <span className="text-sm font-medium">
+                    Secure Authentication
+                  </span>
+                </div>
+                <div className="flex items-center justify-center space-x-3">
+                  <Lock className="h-6 w-6 text-blue-500" />
+                  <span className="text-sm font-medium">
+                    End-to-End Encryption
+                  </span>
+                </div>
+                <div className="flex items-center justify-center space-x-3">
+                  <Zap className="h-6 w-6 text-yellow-500" />
+                  <span className="text-sm font-medium">
+                    Lightning Fast Setup
+                  </span>
+                </div>
+                <div className="pt-4">
+                  <div className="h-32 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center">
+                    <div className="text-6xl opacity-20">🛡️</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" className="py-20 md:py-28">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">
+              Why Accountable?
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              We focus on the fundamentals of a great user experience: security,
+              reliability, and performance.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+              <ShieldCheck className="h-12 w-12 mx-auto text-primary mb-4" />
+              <h3 className="text-xl font-bold font-headline mb-2">
+                Secure by Design
+              </h3>
+              <p className="text-muted-foreground">
+                Your data is protected with industry-leading security practices.
+              </p>
+            </Card>
+            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+              <Users className="h-12 w-12 mx-auto text-primary mb-4" />
+              <h3 className="text-xl font-bold font-headline mb-2">
+                User-Centric
+              </h3>
+              <p className="text-muted-foreground">
+                We build for you. Our products are intuitive and easy to use.
+              </p>
+            </Card>
+            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+              <TrendingUp className="h-12 w-12 mx-auto text-primary mb-4" />
+              <h3 className="text-xl font-bold font-headline mb-2">
+                Built to Scale
+              </h3>
+              <p className="text-muted-foreground">
+                Our infrastructure grows with you, ensuring reliability.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="py-20 md:py-28 bg-card">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">
+              Loved by Users Worldwide
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Don't just take our word for it. Here's what our users have to
+              say.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <Avatar className="h-12 w-12 mr-4">
+                    <AvatarImage
+                      src="https://via.placeholder.com"
+                      alt="User 1"
+                      data-ai-hint="person portrait"
+                    />
+                    <AvatarFallback>JD</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h4 className="font-bold">Jane Doe</h4>
+                    <p className="text-sm text-muted-foreground">
+                      CEO, Innovate Inc.
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground italic">
+                  "The best service I've ever used. Incredibly reliable and the
+                  support is top-notch."
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <Avatar className="h-12 w-12 mr-4">
+                    <AvatarImage
+                      src="https://via.placeholder.com"
+                      alt="User 2"
+                      data-ai-hint="person smiling"
+                    />
+                    <AvatarFallback>JS</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h4 className="font-bold">John Smith</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Freelance Developer
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground italic">
+                  "Accountable has simplified my workflow and given me peace of
+                  mind. Highly recommended."
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <Avatar className="h-12 w-12 mr-4">
+                    <AvatarImage
+                      src="https://via.placeholder.com"
+                      alt="User 3"
+                      data-ai-hint="woman developer"
+                    />
+                    <AvatarFallback>SA</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h4 className="font-bold">Sarah Adams</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Project Manager
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground italic">
+                  "A game-changer for our team. The user experience is so smooth
+                  and intuitive."
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28 text-center">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">
+            Ready to Get Started?
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Join thousands of satisfied users who trust Accountable. Create your
+            free account today and experience the difference.
+          </p>
+          <Button size="lg" className="mt-8">
+            Sign Up Now
+          </Button>
+        </div>
+      </section>
+    </>
   );
 }
