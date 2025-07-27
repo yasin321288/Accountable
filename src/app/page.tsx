@@ -227,8 +227,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-muted-foreground italic">
-                  &quot;A game-changer for our team. The user experience is so smooth
-                  and intuitive.&quot;
+                  &ldquo;A game-changer for our team. The user experience is so smooth
+                  and intuitive.&rdquo;
                 </p>
               </CardContent>
             </Card>

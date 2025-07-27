@@ -33,7 +33,7 @@ export default function UserCard({ name, email }: UserCardProps) {
       </CardHeader>
       <CardContent>
         <div className="flex justify-center">
-            <p className="text-sm text-muted-foreground italic">"Accountability is the glue that ties commitment to the result."</p>
+            <p className="text-sm text-muted-foreground italic">Accountability is the glue that ties commitment to the result.</p>
         </div>
       </CardContent>
     </Card>
