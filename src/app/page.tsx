@@ -41,7 +41,7 @@ export default function Home() {
           </h1>
           <p className="text-muted-foreground mb-8 max-w-2xl">
             Your account has been created successfully. You are now part of a
-            community that values trust and transparency. Explore what's next
+            community that values trust and transparency. Explore what&apos;s next
             for you.
           </p>
           <UserCard name={user.fullName} email={user.email} />
@@ -156,7 +156,7 @@ export default function Home() {
               Loved by Users Worldwide
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Don't just take our word for it. Here's what our users have to
+              Don&apos;t just take our word for it. Here&apos;s what our users have to
               say.
             </p>
           </div>
@@ -166,7 +166,7 @@ export default function Home() {
                 <div className="flex items-center mb-4">
                   <Avatar className="h-12 w-12 mr-4">
                     <AvatarImage
-                      src="https://via.placeholder.com"
+                      src="https://via.placeholder.com/100"
                       alt="User 1"
                       data-ai-hint="person portrait"
                     />
@@ -180,8 +180,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-muted-foreground italic">
-                  "The best service I've ever used. Incredibly reliable and the
-                  support is top-notch."
+                  &quot;The best service I&apos;ve ever used. Incredibly reliable and the
+                  support is top-notch.&quot;
                 </p>
               </CardContent>
             </Card>
@@ -190,7 +190,7 @@ export default function Home() {
                 <div className="flex items-center mb-4">
                   <Avatar className="h-12 w-12 mr-4">
                     <AvatarImage
-                      src="https://via.placeholder.com"
+                      src="https://via.placeholder.com/100"
                       alt="User 2"
                       data-ai-hint="person smiling"
                     />
@@ -204,8 +204,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-muted-foreground italic">
-                  "Accountable has simplified my workflow and given me peace of
-                  mind. Highly recommended."
+                  &quot;Accountable has simplified my workflow and given me peace of
+                  mind. Highly recommended.&quot;
                 </p>
               </CardContent>
             </Card>
@@ -214,7 +214,7 @@ export default function Home() {
                 <div className="flex items-center mb-4">
                   <Avatar className="h-12 w-12 mr-4">
                     <AvatarImage
-                      src="https://via.placeholder.com"
+                      src="https://via.placeholder.com/100"
                       alt="User 3"
                       data-ai-hint="woman developer"
                     />
@@ -228,8 +228,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-muted-foreground italic">
-                  "A game-changer for our team. The user experience is so smooth
-                  and intuitive."
+                  &quot;A game-changer for our team. The user experience is so smooth
+                  and intuitive.&quot;
                 </p>
               </CardContent>
             </Card>
