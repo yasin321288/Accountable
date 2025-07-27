@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import {
   ShieldCheck,
   Users,
@@ -180,8 +179,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-muted-foreground italic">
-                  &quot;The best service I&apos;ve ever used. Incredibly reliable and the
-                  support is top-notch.&quot;
+                  &ldquo;The best service I&apos;ve ever used. Incredibly reliable and the
+                  support is top-notch.&rdquo;
                 </p>
               </CardContent>
             </Card>
@@ -204,8 +203,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-muted-foreground italic">
-                  &quot;Accountable has simplified my workflow and given me peace of
-                  mind. Highly recommended.&quot;
+                  &ldquo;Accountable has simplified my workflow and given me peace of
+                  mind. Highly recommended.&rdquo;
                 </p>
               </CardContent>
             </Card>
